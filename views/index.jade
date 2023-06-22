@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  header 
+    h1= title
+    if (user)
+      h2 welcome to the club 
+        strong(style="color:cyan") #{user.fullname}
+      h3 Membership status: #{user.membership_status ? "Member" : "Not Member"}
+      if !user.membership_status
+        a(href="/join") Join Club 
+      else 
+        a(href="/newmessage") Create a message
+      a(href="/logout") Logout 
+    else 
+      div
+        a(href="/login") Log In
+        a(href="/signup") Sign Up
+    
+  section
+    if messages
+      h3 Messages 
+      each msg in messages
+        div(class="message")
+          p(class="title")=msg.title 
+          p(class="msg-content")=msg.content 
+          if user
+            if user.membership_status
+              p 
+                strong(style="color:cyan") Author: #{msg.author.fullname}
+                p Date: #{msg.timestamp}
+            if user.admin 
+              a(href="/message/" + msg.id+"/delete") Delete message 

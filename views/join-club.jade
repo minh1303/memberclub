@@ -1,0 +1,11 @@
+extends layout 
+
+block content 
+    h1 Enter the secret code to join club
+    form(action="" method="post")
+        label(for="secretcode")
+            input(type="password" name="secretcode")
+        if errors 
+            each error in errors
+                p=error.msg
+        input(type="submit", value="Enter")  

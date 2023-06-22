@@ -1,0 +1,7 @@
+extends layout 
+
+block content 
+    h1 Do you really want to delete this message? 
+    p title: #{msg.title} content: #{msg.content}
+    form(action="" method="post")
+        input(type="submit" value="Delete") 

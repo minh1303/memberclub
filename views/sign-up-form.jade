@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1= title
+  form(action="" id="sign-up-form" method="post") 
+    label(for="firstname") First name: 
+      input(type="text" name="firstname" required="true") 
+    label(for="lastname") Last name: 
+      input(type="text" name="lastname" required="true")
+    label(for="username") Username: 
+      input(type="text" name="username" required="true")
+    label(for="password") Password: 
+      input(type="password" name="password" required="true")
+    label(for="confirmpassword") Confirm Password: 
+      input(type="password" name="confirmpassword" required="true")
+    label(for="isadmin") Is admin: 
+      input(type="checkbox" name="isadmin")  
+    if errors 
+      each error in errors 
+        p=error.msg
+    input(type="submit" value="Sign Up")

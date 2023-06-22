@@ -1,0 +1,12 @@
+extends layout 
+
+block content 
+    form(method="post")
+        label(for="title") Title: 
+            input(type="text" name="title" required="true") 
+        label(for="content") Content: 
+            input(type="text" name="content" required="true")
+        if errors 
+            each error in errors
+                p=error.msg 
+        input(type="submit", value="Create")
